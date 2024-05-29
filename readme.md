@@ -2,5 +2,5 @@
 ## Install & Upgrade
 
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
+bash <(curl -Ls https://github.com/dev-ir/assistant-vps/blob/master/install.sh)
 ```
