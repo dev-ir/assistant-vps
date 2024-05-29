@@ -15,6 +15,9 @@ cur_dir=$(pwd)
 wellcome(){
     echo -e "Hi , welcome to dev-ir script"
     echo -e "1- install speedtest on IR VPS"
+    echo -e "${green}Please choose an option:${red}"
+
+    read -p "Enter option number: " choice
 }
 
 wellcome
