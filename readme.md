@@ -21,4 +21,4 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 - OpenSUSE Tubleweed
 
 ## Preview
-https://github.com/dev-ir/assistant-vps/assets/114811214/23447eb2-4504-46e6-bcbc-2e9c1d8c5f72
+![image](https://github.com/dev-ir/assistant-vps/assets/114811214/23447eb2-4504-46e6-bcbc-2e9c1d8c5f72)
