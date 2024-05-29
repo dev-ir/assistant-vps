@@ -53,6 +53,7 @@ wellcome(){
     echo -e "${BLUE}| 9  - Remove Iptables       ( Any )"
     echo -e "${BLUE}| 10 - Install BBR v3        ( IRAN )"
     echo -e "${BLUE}| 11 - Install WARP+         ( Kharej )"
+    echo -e "${BLUE}| 12 - Speedtest ArvanCloud  ( Kharej )"
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
     echo -e "${GREEN}+-----------------------------------------------------------------------------------------+"
@@ -109,6 +110,11 @@ wellcome(){
 
         echo "Rules iptable Removed."
         ;;
+
+    12)
+        bash <(curl -s https://raw.githubusercontent.com/arvancloud/support/main/bench.sh)
+        ;;
+
     0)
         echo -e "${GREEN}Exiting program...${NC}"
         exit 0
