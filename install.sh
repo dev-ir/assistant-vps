@@ -82,11 +82,8 @@ wellcome(){
     echo -e "${BLUE}| 11 - Install WARP+                            ( Kharej )"
     echo -e "${BLUE}| 12 - Speedtest ArvanCloud                     ( Kharej )"
     echo -e "${BLUE}| 13 - Change SSH port                          ( Any )"
-    echo -e "${BLUE}| 14 - Update and install dependences           ( Any )"
     echo -e "${BLUE}| 14 - Auto SSL Marzban/X-UI (by @ErfJab)       ( Any )"
     echo -e "${BLUE}| 15 - Auto Backup Marzban/X-UI (by @AC_Lover)  ( Kharej )"
-    echo -e "${BLUE}| 16 - Change Password SSH                      ( Any )"
-
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
     echo -e "${GREEN}+---------------------------------------------------------------------------+"
