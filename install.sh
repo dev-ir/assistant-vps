@@ -22,6 +22,38 @@ install_speedtest(){
     speedtest
 }
 
+
+change_ssh_port(){
+    echo ""
+    echo -n "Please enter the port you would like SSH to run on > "
+    while read SSHPORT; do
+        if [[ "$SSHPORT" =~ ^[0-9]{2,5}$ || "$SSHPORT" = 22 ]]; then
+            if [[ "$SSHPORT" -ge 1024 && "$SSHPORT" -le 65535 || "$SSHPORT" = 22 ]]; then
+                # Create backup of current SSH config
+                NOW=$(date +"%m_%d_%Y-%H_%M_%S")
+                cp /etc/ssh/sshd_config /etc/ssh/sshd_config.inst.bckup.$NOW
+                # Apply changes to sshd_config
+                sed -i -e "/Port /c\Port $SSHPORT" /etc/ssh/sshd_config
+                echo -e "Restarting SSH in 5 seconds. Please wait.\n"
+                sleep 5
+                # Restart SSH service
+                service sshd restart
+                echo ""
+                echo -e "The SSH port has been changed to $SSHPORT. Please login using that port to test BEFORE ending this session.\n"
+                exit 0
+            else
+                echo -e "Invalid port: must be 22, or between 1024 and 65535."
+                echo -n "Please enter the port you would like SSH to run on > "
+            fi
+        else
+            echo -e "Invalid port: must be numeric!"
+            echo -n "Please enter the port you would like SSH to run on > "
+        fi
+    done
+
+    echo ""    
+}
+
 wellcome(){
 
     clear
@@ -49,11 +81,12 @@ wellcome(){
     echo -e "${BLUE}| 5  - Set DNS Shecan        ( IRAN )"
     echo -e "${BLUE}| 6  - FIX Time WhatsApp     ( Kharej )"
     echo -e "${BLUE}| 7  - Disable IPv6          ( Any )"
-    echo -e "${BLUE}| 8  - Speedtest By bench    ( Any )"
+    echo -e "${BLUE}| 8  - Speedtest bench       ( Any )"
     echo -e "${BLUE}| 9  - Remove Iptables       ( Any )"
     echo -e "${BLUE}| 10 - Install BBR v3        ( IRAN )"
     echo -e "${BLUE}| 11 - Install WARP+         ( Kharej )"
     echo -e "${BLUE}| 12 - Speedtest ArvanCloud  ( Kharej )"
+    echo -e "${BLUE}| 13 - Change SSH port       ( Any )"
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
     echo -e "${GREEN}+-----------------------------------------------------------------------------------------+"
@@ -66,7 +99,9 @@ wellcome(){
         echo "All Package is Upadted."
         ;;
     2)
-        htop
+        # htop
+        sudo apt install btop
+        btop
         ;;
     3)
         # htop
@@ -113,6 +148,10 @@ wellcome(){
 
     12)
         bash <(curl -s https://raw.githubusercontent.com/arvancloud/support/main/bench.sh)
+        ;;
+
+    13)
+        change_ssh_port
         ;;
 
     0)
