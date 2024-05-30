@@ -58,38 +58,38 @@ wellcome(){
 
     clear
 
-    echo -e "${RED}+-----------------------------------------------------------------------------------------+${RED}"
-    echo -e "${BLUE}|ver 0.0.1                                                                                |${RED}"
-    echo -e "${BLUE}|  .+++=.   -+++=.     :=++++=.      :=+++*+-    .=+++++++++=  .=+++-  .=++-     :+++.    |${RED}" 
-    echo -e "${BLUE}|   :@@.     -@@     :%#:    +@#.   =@=    *@#     @@=    .%%    @@+     @@@+     -@:     |${RED}" 
-    echo -e "${BLUE}|   .@@      :@@    :@@       *@#          -@%     @@=      .    %@+     @++@#.   -@.     |${RED}" 
-    echo -e "${BLUE}|   .@@      :@@    *@*       :@@.       .=%*      @@=   +*      %@+     @+ =@@:  -@:     |${RED}" 
-    echo -e "${BLUE}|   .@@++++++*@@    %@+       .@@:    .+*%@*-      @@#++*@#      %@+     @+  -@@- -@:     |${RED}" 
-    echo -e "${BLUE}|   .@@      -@@    #@#       :@@.         +@%     @@=   :-      %@+     @+   .%@+:@:     |${RED}" 
-    echo -e "${BLUE}|   .@@      :@@    -@@.      +@*           @@:    @@=     :=    %@+     @+     *@#@:     |${RED}" 
-    echo -e "${BLUE}|   :@@.     -@@     -@%-   .+@+    *@-    +@+     @@=    .%%    @@+     @*      +@@:     |${RED}" 
-    echo -e "${BLUE}|  .=++=.   -+++=.     :=+++=-      .-=++++-.    .=+++++++++=  .=+++-  .=++-      -+.     |${RED}"
-    echo -e "${BLUE}|                                                                                         |${RED}"
-    echo -e "${BLUE}+-----------------------------------------------------------------------------------------+${RED}"
+    echo -e "${RED}+---------------------------------------------------------------------------+${RED}"
+    echo -e "${BLUE}|${GREEN}ver 0.0.2${RED}                                                                  |${RED}"
+    echo -e "${BLUE}|  .=+=.  .=+=.     :=++=.     ++++++=   +++++++=  .=+++-  .=++-     :+++.  |${RED}" 
+    echo -e "${BLUE}|   .@@    :@@    :@@    *@#        @@   @@          @+     @++@#.   -@.    |${RED}" 
+    echo -e "${BLUE}|   .@@++++*@@    %@+    .@@:    =+++=   @@++++      @+     @+  -@@- -@:    |${RED}" 
+    echo -e "${BLUE}|   .@@    :@@    -@@.   +@*        @@   @@          @+     @+     *@#@:    |${RED}" 
+    echo -e "${BLUE}|  .=+=.  .=+=.     :=+=--     ++++++=   =+++++=   .=+++-  .=++-      -+.   |${RED}"
+    echo -e "${BLUE}+---------------------------------------------------------------------------+${RED}"
     echo -e "${GREEN}Please choose an option:${NC}"
-    echo -e "${GREEN}+-----------------------------------------------------------------------------------------+${NC}"
+    echo -e "${GREEN}+--------------------------------------------------------------------------+${NC}"
     echo -e "$YELLOW${BLUE}|"
-    echo -e "${BLUE}| 1  - Install Speedtest.net ( IRAN )"
-    echo -e "${BLUE}| 2  - Install Monitoring    ( IRAN )"
-    echo -e "${BLUE}| 3  - Install X-UI          ( Alireza , Sanaei )"
-    echo -e "${BLUE}| 4  - Set DNS Google        ( IRAN )"
-    echo -e "${BLUE}| 5  - Set DNS Shecan        ( IRAN )"
-    echo -e "${BLUE}| 6  - FIX Time WhatsApp     ( Kharej )"
-    echo -e "${BLUE}| 7  - Disable IPv6          ( Any )"
-    echo -e "${BLUE}| 8  - Speedtest bench       ( Any )"
-    echo -e "${BLUE}| 9  - Remove Iptables       ( Any )"
-    echo -e "${BLUE}| 10 - Install BBR v3        ( IRAN )"
-    echo -e "${BLUE}| 11 - Install WARP+         ( Kharej )"
-    echo -e "${BLUE}| 12 - Speedtest ArvanCloud  ( Kharej )"
-    echo -e "${BLUE}| 13 - Change SSH port       ( Any )"
+    echo -e "${BLUE}| 1  - Install Speedtest.net                    ( IRAN )"
+    echo -e "${BLUE}| 2  - Install Monitoring                       ( IRAN )"
+    echo -e "${BLUE}| 3  - Install X-UI                             ( Alireza , Sanaei )"
+    echo -e "${BLUE}| 4  - Set DNS Google                           ( IRAN )"
+    echo -e "${BLUE}| 5  - Set DNS Shecan                           ( IRAN )"
+    echo -e "${BLUE}| 6  - FIX Time WhatsApp                        ( Kharej )"
+    echo -e "${BLUE}| 7  - Disable IPv6                             ( Any )"
+    echo -e "${BLUE}| 8  - Speedtest bench                          ( Any )"
+    echo -e "${BLUE}| 9  - Remove Iptables                          ( Any )"
+    echo -e "${BLUE}| 10 - Install BBR v3                           ( IRAN )"
+    echo -e "${BLUE}| 11 - Install WARP+                            ( Kharej )"
+    echo -e "${BLUE}| 12 - Speedtest ArvanCloud                     ( Kharej )"
+    echo -e "${BLUE}| 13 - Change SSH port                          ( Any )"
+    echo -e "${BLUE}| 14 - Update and install dependences           ( Any )"
+    echo -e "${BLUE}| 14 - Auto SSL Marzban/X-UI (by @ErfJab)       ( Any )"
+    echo -e "${BLUE}| 15 - Auto Backup Marzban/X-UI (by @AC_Lover)  ( Kharej )"
+    echo -e "${BLUE}| 16 - Change Password SSH                      ( Any )"
+
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
-    echo -e "${GREEN}+-----------------------------------------------------------------------------------------+"
+    echo -e "${GREEN}+---------------------------------------------------------------------------+"
 
     read -p "Enter option number: " choice
 
@@ -104,7 +104,7 @@ wellcome(){
         btop
         ;;
     3)
-        # htop
+        bash <(curl -Ls https://raw.githubusercontent.com/alireza0/x-ui/master/install.sh)
         ;;
     4)
         cp /etc/resolv.conf /etc/resolv-backup.conf 
@@ -145,6 +145,9 @@ wellcome(){
 
         echo "Rules iptable Removed."
         ;;
+    10)
+        curl -O https://raw.githubusercontent.com/jinwyp/one_click_script/master/install_kernel.sh && chmod +x ./install_kernel.sh && ./install_kernel.sh
+        ;;
 
     12)
         bash <(curl -s https://raw.githubusercontent.com/arvancloud/support/main/bench.sh)
@@ -152,6 +155,16 @@ wellcome(){
 
     13)
         change_ssh_port
+        ;;
+
+    14)
+        sudo bash -c "$(curl -sL https://github.com/erfjab/ESSL/raw/main/essl.sh)"
+        ;;
+    15)
+        bash <(curl -Ls https://github.com/AC-Lover/backup/raw/main/backup.sh)
+        ;;
+    16)
+        sudo passwd
         ;;
 
     0)
