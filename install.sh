@@ -71,7 +71,7 @@ wellcome(){
     echo -e "$YELLOW${BLUE}|"
     echo -e "${BLUE}| 1  - Install Speedtest.net                    ( IRAN )"
     echo -e "${BLUE}| 2  - Install Monitoring                       ( IRAN )"
-    echo -e "${BLUE}| 3  - Install X-UI                             ( Alireza , Sanaei )"
+    echo -e "${BLUE}| 3  - Install X-UI Panel                       ( Alireza , Sanaei )"
     echo -e "${BLUE}| 4  - Set DNS Google                           ( IRAN )"
     echo -e "${BLUE}| 5  - Set DNS Shecan                           ( IRAN )"
     echo -e "${BLUE}| 6  - FIX Time WhatsApp                        ( Kharej )"
@@ -87,6 +87,9 @@ wellcome(){
     echo -e "${BLUE}| 16 - Change Password SSH                      ( Any )"
     echo -e "${BLUE}| 17 - Make Telegram Proxy (MTProto)            ( Kharej )"
     echo -e "${BLUE}| 18 - Update server and install dependences    ( Any )"
+    echo -e "${BLUE}| 19 - Change source list IRAN                  ( IRAN )"
+    echo -e "${BLUE}| 20 - Install Marzban Panel                    ( IRAN )"
+    echo -e "${BLUE}| 20 - Disable/Enable Ping Response             ( Any )"
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
     echo -e "${GREEN}+---------------------------------------------------------------------------+"
@@ -242,6 +245,16 @@ wellcome(){
             # Clear the screen for a fresh start
             clear
         ;;
+
+    19)
+        # sudo passwd
+        ;;
+
+    20)
+        sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install
+        marzban cli admin create --sudo
+        ;;
+
     0)
         echo -e "${GREEN}Exiting program...${NC}"
         exit 0
