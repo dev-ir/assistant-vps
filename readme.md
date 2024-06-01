@@ -34,7 +34,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 
 
 ## Preview
-![image](https://github.com/dev-ir/assistant-vps/assets/114811214/23447eb2-4504-46e6-bcbc-2e9c1d8c5f72)
+![image](https://github.com/dev-ir/assistant-vps/assets/114811214/daf0af82-dd75-433b-abe3-78295bc0f5e3)
 
 ## Languages
 
