@@ -248,6 +248,16 @@ wellcome(){
 
     19)
         # sudo passwd
+
+            if ! command -v python3 &> /dev/null
+            then
+                echo "Python 3 نصب نیست. در حال نصب..."
+                sudo apt update
+                sudo apt install -y python3
+            fi
+
+            python3 core/change-name-server.py
+
         ;;
 
     20)
