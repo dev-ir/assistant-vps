@@ -86,6 +86,7 @@ wellcome(){
     echo -e "${BLUE}| 15 - Auto Backup Marzban/X-UI (by @AC_Lover)  ( Kharej )"
     echo -e "${BLUE}| 16 - Change Password SSH                      ( Any )"
     echo -e "${BLUE}| 17 - Make Telegram Proxy (MTProto)            ( Kharej )"
+    echo -e "${BLUE}| 18 - Update server and install dependences    ( Any )"
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
     echo -e "${GREEN}+---------------------------------------------------------------------------+"
