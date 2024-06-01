@@ -23,6 +23,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 - Auto SSL Marzban/X-UI
 - Auto Backup Marzban/X-UI
 - Install X-UI
+- Install MTProto
 
 ## Recommended OS
 
