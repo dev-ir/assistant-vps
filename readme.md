@@ -1,3 +1,12 @@
+<h1 align="center"/>⚡️ Welcome to Assistant VPS ⚡️</h1>
+
+<p align="">
+🍟 Easy to sell with <a href="https://github.com/dev-ir/assistant-vps/">assistant-vps</a> easy install with few clicks
+</p>
+
+## Support project 
+
+**We don't need financial support, only Star (⭐) is enough, thank you.**
 
 ## Install & Upgrade
 
@@ -5,7 +14,7 @@
 bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/install.sh)
 ```
 
-## Features
+## 💫 Features
 
 - System Status Monitoring
 - Install Speedtest.Net in IRAN VPS
@@ -26,7 +35,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 - Install MTProto
 - Update server and install dependences
 
-## Recommended OS
+## 💻 Recommended OS
 
 - Ubuntu 20.04+
 - Debian 11+
@@ -35,7 +44,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 - Armbian
 
 
-## Preview
+## 🪚 Preview
 ![image](https://github.com/dev-ir/assistant-vps/assets/114811214/daf0af82-dd75-433b-abe3-78295bc0f5e3)
 
 ## Languages
@@ -49,6 +58,3 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 
 - USDT (TRC20): `TVUqVMoCEe5DVUoxmPg8MwmgcHvZLqLjr4`
 
-## Support project 
-
-**We don't need financial support, only Star (⭐) is enough, thank you.**
