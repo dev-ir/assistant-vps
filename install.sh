@@ -89,7 +89,7 @@ wellcome(){
     echo -e "${BLUE}| 18 - Update server and install dependences    ( Any )"
     echo -e "${BLUE}| 19 - Change source list IRAN                  ( IRAN )"
     echo -e "${BLUE}| 20 - Install Marzban Panel                    ( IRAN )"
-    echo -e "${BLUE}| 20 - Disable/Enable Ping Response             ( Any )"
+    echo -e "${BLUE}| 21 - Disable/Enable Ping Response             ( Any )"
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
     echo -e "${GREEN}+---------------------------------------------------------------------------+"
@@ -253,6 +253,9 @@ wellcome(){
     20)
         sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install
         marzban cli admin create --sudo
+        ;;
+    21)
+        sudo sysctl -w net.ipv4.icmp_echo_ignore_all=1
         ;;
 
     0)
