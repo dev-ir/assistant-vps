@@ -24,6 +24,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 - Auto Backup Marzban/X-UI
 - Install X-UI
 - Install MTProto
+- Update server and install dependences
 
 ## Recommended OS
 
