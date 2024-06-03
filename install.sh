@@ -152,6 +152,10 @@ wellcome(){
         curl -O https://raw.githubusercontent.com/jinwyp/one_click_script/master/install_kernel.sh && chmod +x ./install_kernel.sh && ./install_kernel.sh
         ;;
 
+    11)
+        wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh
+        ;;
+
     12)
         bash <(curl -s https://raw.githubusercontent.com/arvancloud/support/main/bench.sh)
         ;;
