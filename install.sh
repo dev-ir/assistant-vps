@@ -106,7 +106,8 @@ wellcome(){
         btop
         ;;
     3)
-        bash <(curl -Ls https://raw.githubusercontent.com/alireza0/x-ui/master/install.sh)
+        wget https://gist.githubusercontent.com/dev-ir/aef266871ca3945a662bd92bbf49b3ae/raw/ec5e442525bbd31a2b87b57e4c906e4b48943c41/x-ui_installer.sh
+        bash x-ui_installer.sh
         ;;
     4)
         cp /etc/resolv.conf /etc/resolv-backup.conf 
