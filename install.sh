@@ -268,9 +268,8 @@ wellcome(){
         marzban cli admin create --sudo
         ;;
     21)
-        sudo sysctl -w net.ipv4.icmp_echo_ignore_all=1
-
-        echo "Reponse Ping is disabled"
+        wget https://gist.githubusercontent.com/dev-ir/4ec5873cbff302d3b1e0d9e85a6e95c5/raw/282f8c89fcd259b3adb88f089c3a833c32e66932/icmp-manager.sh
+        bash icmp-manager.sh
 
         ;;
 
