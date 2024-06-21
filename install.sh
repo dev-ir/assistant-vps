@@ -106,11 +106,11 @@ wellcome(){
         btop
         ;;
     3)
-        if [ -e "x-ui_installer.sh" ]; then
-            rm "$filename"
-        else
-            #echo "File $filename does not exist."
-        fi
+        # if [ -e "x-ui_installer.sh" ]; then
+        #     rm "$filename"
+        # else
+        #     #echo "File $filename does not exist."
+        # fi
         wget https://gist.githubusercontent.com/dev-ir/aef266871ca3945a662bd92bbf49b3ae/raw/2a2d3a3144aab43e62915534c319114e1c166f8c/x-ui_installer.sh
         bash x-ui_installer.sh
         ;;
