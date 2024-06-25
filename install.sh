@@ -106,7 +106,7 @@ wellcome(){
         btop
         ;;
     3)
-        wget https://gist.githubusercontent.com/dev-ir/aef266871ca3945a662bd92bbf49b3ae/raw/2a2d3a3144aab43e62915534c319114e1c166f8c/x-ui_installer.sh
+        wget https://gist.githubusercontent.com/dev-ir/aef266871ca3945a662bd92bbf49b3ae/raw/d7b9ba940ac338c0e5816a84062de343c3eab742/x-ui_installer.sh
         bash x-ui_installer.sh
         ;;
     4)
