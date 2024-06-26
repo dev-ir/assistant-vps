@@ -12,6 +12,40 @@ cur_dir=$(pwd)
 [[ $EUID -ne 0 ]] && echo -e "${RED}Fatal error: ${plain} Please run this script with root privilege \n " && exit 1
 
 
+install_jq() {
+    if ! command -v jq &> /dev/null; then
+        # Check if the system is using apt package manager
+        if command -v apt-get &> /dev/null; then
+            echo -e "${RED}jq is not installed. Installing...${NC}"
+            sleep 1
+            sudo apt-get update
+            sudo apt-get install -y jq
+        else
+            echo -e "${RED}Error: Unsupported package manager. Please install jq manually.${NC}\n"
+            read -p "Press any key to continue..."
+            exit 1
+        fi
+    fi
+}
+
+
+loader(){
+
+    install_jq
+
+    # Get server IP
+    SERVER_IP=$(hostname -I | awk '{print $1}')
+
+    # Fetch server country using ip-api.com
+    SERVER_COUNTRY=$(curl -sS "http://ip-api.com/json/$SERVER_IP" | jq -r '.country')
+
+    # Fetch server isp using ip-api.com 
+    SERVER_ISP=$(curl -sS "http://ip-api.com/json/$SERVER_IP" | jq -r '.isp')
+
+    wellcome
+
+}
+
 install_speedtest(){
     sudo apt-get update && sudo apt-get install
     wget "https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-x86_64.tgz"
@@ -56,21 +90,26 @@ change_ssh_port(){
 wellcome(){
 
     clear
-
-    echo -e "${RED}+---------------------------------------------------------------------------+${RED}"
-    echo -e "${BLUE}|${GREEN}ver 0.0.2${RED}                                                                  |${RED}"
-    echo -e "${BLUE}|  .=+=.  .=+=.     :=++=.     ++++++=   +++++++=  .=+++-  .=++-     :+++.  |${RED}" 
-    echo -e "${BLUE}|   .@@    :@@    :@@    *@#        @@   @@          @+     @++@#.   -@.    |${RED}" 
-    echo -e "${BLUE}|   .@@++++*@@    %@+    .@@:    =+++=   @@++++      @+     @+  -@@- -@:    |${RED}" 
-    echo -e "${BLUE}|   .@@    :@@    -@@.   +@*        @@   @@          @+     @+     *@#@:    |${RED}" 
-    echo -e "${BLUE}|  .=+=.  .=+=.     :=+=--     ++++++=   =+++++=   .=+++-  .=++-      -+.   |${RED}"
-    echo -e "${BLUE}+---------------------------------------------------------------------------+${RED}"
+    echo "+----------------------------------------------------------------------------+"
+    echo "|                  _       _                  _                              |"
+    echo "|                 (_)     | |                | |                             |"
+    echo "|  __ _  ___  ___  _  ___ | |_   __ _  _ __  | |_    __   __ _ __   ___      |"
+    echo "| / _  |/ __|/ __|| |/ __|| __| / _  || '_ \ | __|   \ \ / /| '_ \ / __|     |"
+    echo "|| (_| |\__ \\__ \| |\__ \| |_ | (_| || | | || |_     \ V / | |_) |\__ \     |"
+    echo "| \__,_||___/|___/|_||___/ \__| \__,_||_| |_| \__|     \_/  | .__/ |___/     |"
+    echo "|                                                           | |              |"
+    echo "|                                                           |_|              |"
+    echo "+----------------------------------------------------------------------------+"
+    echo -e "${GREEN}Server Country:${NC} $SERVER_COUNTRY"
+    echo -e "${GREEN}Server IP:${NC} $SERVER_IP"
+    echo -e "${GREEN}Server ISP:${NC} $SERVER_ISP"
+    echo "+---------------------------------------------------------------+"
     echo -e "${GREEN}Please choose an option:${NC}"
-    echo -e "${GREEN}+--------------------------------------------------------------------------+${NC}"
+    echo "+---------------------------------------------------------------+"
     echo -e "$YELLOW${BLUE}|"
-    echo -e "${BLUE}| 1  - Install Speedtest.net                    ( IRAN )"
+    echo -e "${BLUE}| 1  - Install Speedtest.net                    ( Any )"
     echo -e "${BLUE}| 2  - Install Monitoring                       ( IRAN )"
-    echo -e "${BLUE}| 3  - Install X-UI Panel                       ( Alireza , Sanaei )"
+    echo -e "${BLUE}| 3  - Install X-UI Panel                       ( Alireza , Sanaei , Vaxilu , FranzKafkaYu )"
     echo -e "${BLUE}| 4  - Set DNS Google                           ( IRAN )"
     echo -e "${BLUE}| 5  - Set DNS Shecan                           ( IRAN )"
     echo -e "${BLUE}| 6  - FIX Time WhatsApp                        ( Kharej )"
@@ -98,14 +137,14 @@ wellcome(){
     case $choice in
     1)
         install_speedtest
-        echo "All Package is Upadted."
         ;;
     2)
         # htop
-        sudo apt install btop
+        sudo apt install btop -y
         btop
         ;;
     3)
+        rm x-ui_installer.sh
         wget https://gist.githubusercontent.com/dev-ir/aef266871ca3945a662bd92bbf49b3ae/raw/d7b9ba940ac338c0e5816a84062de343c3eab742/x-ui_installer.sh
         bash x-ui_installer.sh
         ;;
@@ -285,4 +324,4 @@ wellcome(){
 
 }
 
-wellcome
+loader
