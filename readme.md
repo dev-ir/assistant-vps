@@ -60,3 +60,5 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 
 - USDT (TRC20): `TVUqVMoCEe5DVUoxmPg8MwmgcHvZLqLjr4`
 
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/dev-ir/assistant-vps.svg?variant=adaptive)](https://starchart.cc/dev-ir/assistant-vps)
