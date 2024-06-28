@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 
 cur_dir=$(pwd)
 # check root
-[[ $EUID -ne 0 ]] && echo -e "${RED}Fatal error: ${plain} Please run this script with root privilege \n " && exit 1
+#[[ $EUID -ne 0 ]] && echo -e "${RED}Fatal error: ${plain} Please run this script with root privilege \n " && exit 1
 
 
 install_jq() {
@@ -31,7 +31,7 @@ install_jq() {
 
 loader(){
 
-    install_jq
+    #install_jq
 
     # Get server IP
     SERVER_IP=$(hostname -I | awk '{print $1}')
@@ -91,14 +91,14 @@ wellcome(){
 
     clear
     echo "+----------------------------------------------------------------------------+"
-    echo "|                  _       _                  _                              |"
-    echo "|                 (_)     | |                | |                             |"
-    echo "|  __ _  ___  ___  _  ___ | |_   __ _  _ __  | |_    __   __ _ __   ___      |"
-    echo "| / _  |/ __|/ __|| |/ __|| __| / _  || '_ \ | __|   \ \ / /| '_ \ / __|     |"
-    echo "|| (_| |\__ \\__ \| |\__ \| |_ | (_| || | | || |_     \ V / | |_) |\__ \     |"
-    echo "| \__,_||___/|___/|_||___/ \__| \__,_||_| |_| \__|     \_/  | .__/ |___/     |"
-    echo "|                                                           | |              |"
-    echo "|                                                           |_|              |"
+    echo "|                   _       _                  _                              |"
+    echo "|                  (_)     | |                | |                             |"
+    echo "|   __ _  ___  ___  _  ___ | |_   __ _  _ __  | |_    __   __ _ __   ___      |"
+    echo "|  / _  |/ __|/ __|| |/ __|| __| / _  ||  _ \ | __|   \ \ / /| '_ \ / __|     |"
+    echo "|  | (_| |\__ \\__ \| |\__ \| |_ | (_| || | | || |_     \ V / | |_) |\__ \     |"
+    echo "|  \____||___/|___/|_||___/ \__| \__,_||_| |_| \__|     \_/  | .__/ |___/     |"
+    echo "|                                                            | |              |"
+    echo "|                                                            |_|              |"
     echo "+----------------------------------------------------------------------------+"
     echo -e "${GREEN}Server Country:${NC} $SERVER_COUNTRY"
     echo -e "${GREEN}Server IP:${NC} $SERVER_IP"
@@ -106,7 +106,7 @@ wellcome(){
     echo "+---------------------------------------------------------------+"
     echo -e "${GREEN}Please choose an option:${NC}"
     echo "+---------------------------------------------------------------+"
-    echo -e "$YELLOW${BLUE}|"
+    echo -e "$YELLOW|"
     echo -e "${BLUE}| 1  - Install Speedtest.net                    ( Any )"
     echo -e "${BLUE}| 2  - Install Monitoring                       ( IRAN )"
     echo -e "${BLUE}| 3  - Install X-UI Panel                       ( Alireza , Sanaei , Vaxilu , FranzKafkaYu )"
