@@ -56,7 +56,11 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 
 **If this project is helpful to you, you may wish to give it a**:star2:
 
-<p align="left"><a href="#"><img width="125" src="https://github.com/dev-ir/assistant-vps/assets/114811214/cc33e615-478e-4b2b-866e-277a6f1c3c81" alt="Image"></a></p>
+<p align="left">
+    <a href="#">
+        <img width="100%" src="https://github.com/dev-ir/WaterWall-Tunnel/assets/114811214/88acabcf-feca-434c-afa2-fc71eabca192" alt="Image">
+    </a>
+</p>
 
 - USDT (TRC20): `TVUqVMoCEe5DVUoxmPg8MwmgcHvZLqLjr4`
 
