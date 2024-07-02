@@ -62,3 +62,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 
 ## Stargazers over time
 [![Stargazers over time](https://starchart.cc/dev-ir/assistant-vps.svg?variant=adaptive)](https://starchart.cc/dev-ir/assistant-vps)
+
+## 📧 Join Telegram Channel
+
+TG : https://t.me/+EpErnDsDPhw3ZThk
