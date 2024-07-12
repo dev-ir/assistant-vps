@@ -53,7 +53,6 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 ## Languages
 
 - English
-- Farsi
 
 **If this project is helpful to you, you may wish to give it a**:star2:
 
