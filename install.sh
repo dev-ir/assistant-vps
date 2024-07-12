@@ -131,7 +131,7 @@ wellcome(){
     echo -e "${BLUE}| 22 - List Port By Usage                       ( Any )"
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
-    echo -e "${GREEN}+---------------------------------------------------------------------------+"
+    echo -e "${GREEN}+---------------------------------------------------------------------------+${NC}"
 
     read -p "Enter option number: " choice
 
