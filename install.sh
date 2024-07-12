@@ -102,16 +102,16 @@ wellcome(){
     echo -e "${GREEN}|Server Country:${NC} $SERVER_COUNTRY"
     echo -e "${GREEN}|Server IP:${NC} $SERVER_IP"
     echo -e "${GREEN}|Server ISP:${NC} $SERVER_ISP"
-    echo "+-------------------------------------------------------------------------------------+"
+    echo "+------------------------------------------------------------------------------------------------------------------+"
     echo -e "${GREEN}|Please choose an option:${NC}"
-    echo "+-------------------------------------------------------------------------------------+"
+    echo "+------------------------------------------------------------------------------------------------------------------+"
     echo -e "$YELLOW|"
     echo -e "${BLUE}| 1  - Install Speedtest.net                    ( Any )"
     echo -e "${BLUE}| 2  - Install Monitoring                       ( IRAN )"
     echo -e "${BLUE}| 3  - Install X-UI Panel                       ( Alireza , Sanaei , Vaxilu , FranzKafkaYu )"
     echo -e "${BLUE}| 4  - Set DNS Google                           ( IRAN )"
     echo -e "${BLUE}| 5  - Set DNS Shecan                           ( IRAN )"
-    echo -e "${BLUE}| 6  - FIX Time WhatsApp                        ( Kharej )"
+    echo -e "${BLUE}| 6  - FIX WhatsApp Time                        ( Kharej )"
     echo -e "${BLUE}| 7  - Disable IPv6                             ( Any )"
     echo -e "${BLUE}| 8  - Speedtest bench                          ( Any )"
     echo -e "${BLUE}| 9  - Remove Iptables                          ( Any )"
@@ -130,7 +130,7 @@ wellcome(){
     echo -e "${BLUE}| 22 - List Port By Usage                       ( Any )"
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
-    echo -e "${NC}+---------------------------------------------------------------------------+${NC}"
+    echo -e "${NC"+------------------------------------------------------------------------------------------------------------------+"NC}"
 
     read -p "Enter option number: " choice
 
