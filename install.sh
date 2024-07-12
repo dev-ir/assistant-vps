@@ -90,16 +90,16 @@ change_ssh_port(){
 wellcome(){
 
     clear
-    echo "+----------------------------------------------------------------------------+"
-    echo "|                   _       _                  _                              |"
-    echo "|                  (_)     | |                | |                             |"
-    echo "|   __ _  ___  ___  _  ___ | |_   __ _  _ __  | |_    __   __ _ __   ___      |"
-    echo "|  / _  |/ __|/ __|| |/ __|| __| / _  ||  _ \ | __|   \ \ / /| '_ \ / __|     |"
-    echo "|  | (_| |\__ \\__ \| |\__ \| |_ | (_| || | | || |_     \ V / | |_) |\__ \     |"
-    echo "|  \____||___/|___/|_||___/ \__| \__,_||_| |_| \__|     \_/  | .__/ |___/     |"
-    echo "|                                                            | |              |"
-    echo "|                                                            |_|              |"
-    echo "+----------------------------------------------------------------------------+"
+    
+    echo "+-------------------------------------------------------------------------------------+"
+    echo "|                      _       _                  _    __      __ _____    _____      |"
+    echo "|     /\              (_)     | |                | |   \ \    / /|  __ \  / ____|     |"
+    echo "|    /  \    ___  ___  _  ___ | |_   __ _  _ __  | |_   \ \  / / | |__) || (___       |"
+    echo "|   / /\ \  / __|/ __|| |/ __|| __| / _  ||  _ \ | __|   \ \/ /  |  ___/  \___ \      |"
+    echo "|  / ____ \ \__ \\__ \| |\__ \| |_ | (_| || | | || |_     \  /   | |      ____) |     |"
+    echo "| /_/    \_\|___/|___/|_||___/ \__| \__,_||_| |_| \__|     \/    |_|     |_____/      |"
+    echo "|                                                                                     |"
+    echo "+-------------------------------------------------------------------------------------+"
     echo -e "${GREEN}Server Country:${NC} $SERVER_COUNTRY"
     echo -e "${GREEN}Server IP:${NC} $SERVER_IP"
     echo -e "${GREEN}Server ISP:${NC} $SERVER_ISP"
@@ -128,6 +128,7 @@ wellcome(){
     echo -e "${BLUE}| 19 - Change source list IRAN                  ( IRAN )"
     echo -e "${BLUE}| 20 - Install Marzban Panel                    ( IRAN )"
     echo -e "${BLUE}| 21 - Disable/Enable Ping Response             ( Any )"
+    echo -e "${BLUE}| 22 - List Port By Usage                       ( Any )"
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
     echo -e "${GREEN}+---------------------------------------------------------------------------+"
@@ -310,7 +311,9 @@ wellcome(){
     21)
         wget https://gist.githubusercontent.com/dev-ir/4ec5873cbff302d3b1e0d9e85a6e95c5/raw/282f8c89fcd259b3adb88f089c3a833c32e66932/icmp-manager.sh
         bash icmp-manager.sh
-
+        ;;
+    22)
+        bash <(curl -Ls https://gist.githubusercontent.com/dev-ir/9e0d30603a7f9c50700c1d48a206af4d/raw/786d93cbdd79315c9acbc13cd47aa1523f33e944/list-port-usages)
         ;;
 
     0)
