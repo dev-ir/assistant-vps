@@ -36,6 +36,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 - Install MTProto
 - Update server and install dependences
 - Change source list IRAN 🇮🇷
+- List Port By SiZE
 
 ## 💻 Recommended OS
 
