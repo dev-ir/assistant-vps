@@ -18,9 +18,9 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 
 - System Status Monitoring
 - Install Speedtest.Net in IRAN VPS
-- Set DNS Google On VPS
-- Set DNS Shecan On VPS
-- Fix time whatsapp
+- Block All SPEEDTEST Sites in X-UI
+- Set DNS Google / Shecan
+- Fix WhatsApp datetime
 - Disable IPv6
 - Speedtest by bench.io
 - Remove iptables
@@ -31,11 +31,11 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 - Speedtest by ArvanCloud
 - Auto SSL Marzban/X-UI
 - Auto Backup Marzban/X-UI
-- Install X-UI
-- Install Marzban
+- Install any version of X-UI Panel
+- Install Marzban Panel
 - Install MTProto
 - Update server and install dependences
-- Change source list IRAN 🇮🇷
+- Change source list to IRAN
 - List Port By SiZE
 
 ## 💻 Recommended OS
