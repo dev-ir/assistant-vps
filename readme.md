@@ -48,7 +48,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 
 
 ## 🪚 Preview
-![image](https://github.com/dev-ir/WaterWall-Tunnel/assets/114811214/88acabcf-feca-434c-afa2-fc71eabca192)
+![image](https://github.com/user-attachments/assets/f78cc5b4-8c2a-4d3a-a4b9-8da6fb166b2d)
 
 ## Languages
 
