@@ -90,15 +90,15 @@ change_ssh_port(){
 wellcome(){
 
     clear
-    echo "+------------------------------------------------------------------------------------------------------------------+"
-    echo "|   ##      ####     ####     ####     ####    ######     ##     ##  ##   ######          ##  ##   #####     ####  |"
-    echo "|  ####    ##  ##   ##  ##     ##     ##  ##     ##      ####    ### ##     ##            ##  ##   ##  ##   ##  ## |" 
-    echo "| ##  ##   ##       ##         ##     ##         ##     ##  ##   ######     ##            ##  ##   ##  ##   ##     |" 
-    echo "| ######    ####     ####      ##      ####      ##     ######   ######     ##   ######   ##  ##   #####     ####  |" 
-    echo "| ##  ##       ##       ##     ##         ##     ##     ##  ##   ## ###     ##            ##  ##   ##           ## |" 
-    echo "| ##  ##   ##  ##   ##  ##     ##     ##  ##     ##     ##  ##   ##  ##     ##              ###    ##       ##  ## |" 
-    echo "| ##  ##    ####     ####     ####     ####      ##     ##  ##   ##  ##     ##              ##     ##        ####  |" 
-    echo "+------------------------------------------------------------------------------------------------------------------+"
+    echo "+---------------------------------------------------------------------------------------------------------------------+"
+    echo "|   ##      ####     ####     ####     ####    ######     ##     ##  ##   ######        ##  ##   #####    ####       |"
+    echo "|  ####    ##  ##   ##  ##     ##     ##  ##     ##      ####    ### ##     ##          ##  ##   ##  ##  ##  ##      |" 
+    echo "| ##  ##   ##       ##         ##     ##         ##     ##  ##   ######     ##          ##  ##   ##  ##  ##          |" 
+    echo "| ######    ####     ####      ##      ####      ##     ######   ######     ##   #####  ##  ##   #####    ####       |" 
+    echo "| ##  ##       ##       ##     ##         ##     ##     ##  ##   ## ###     ##          ##  ##   ##          ##      |" 
+    echo "| ##  ##   ##  ##   ##  ##     ##     ##  ##     ##     ##  ##   ##  ##     ##            ###    ##      ##  ## (2.1)|" 
+    echo "| ##  ##    ####     ####     ####     ####      ##     ##  ##   ##  ##     ##            ##     ##       ####       |"
+    echo "+--------------------------------------------------------------------------------------------------------------------+"
     echo -e "${GREEN}|Server Location:${NC} $SERVER_COUNTRY"
     echo -e "${GREEN}|Server IP:${NC} $SERVER_IP"
     echo -e "${GREEN}|Server ISP:${NC} $SERVER_ISP"
@@ -106,28 +106,29 @@ wellcome(){
     echo -e "${GREEN}|Please choose an option:${NC}"
     echo "+------------------------------------------------------------------------------------------------------------------+"
     echo -e "$YELLOW|"
-    echo -e "${BLUE}| 1  - Install Speedtest.net                    ( Any )"
-    echo -e "${BLUE}| 2  - Install Monitoring                       ( IRAN )"
+    echo -e "${BLUE}| 1  - Install Speedtest.net"
+    echo -e "${BLUE}| 2  - Install Monitoring"
     echo -e "${BLUE}| 3  - Install X-UI Panel                       ( Alireza , Sanaei , Vaxilu , FranzKafkaYu )"
-    echo -e "${BLUE}| 4  - Set DNS Google                           ( IRAN )"
-    echo -e "${BLUE}| 5  - Set DNS Shecan                           ( IRAN )"
-    echo -e "${BLUE}| 6  - FIX WhatsApp Time                        ( Kharej )"
-    echo -e "${BLUE}| 7  - Disable IPv6                             ( Any )"
-    echo -e "${BLUE}| 8  - Speedtest bench                          ( Any )"
-    echo -e "${BLUE}| 9  - Remove Iptables Rules                    ( Any )"
-    echo -e "${BLUE}| 10 - Install BBR v3                           ( IRAN )"
-    echo -e "${BLUE}| 11 - Install WARP+                            ( Kharej )"
-    echo -e "${BLUE}| 12 - Speedtest ArvanCloud                     ( Kharej )"
-    echo -e "${BLUE}| 13 - Change SSH port                          ( Any )"
-    echo -e "${BLUE}| 14 - Auto SSL Marzban/X-UI (by @ErfJab)       ( Any )"
-    echo -e "${BLUE}| 15 - Auto Backup Marzban/X-UI (by @AC_Lover)  ( Kharej )"
-    echo -e "${BLUE}| 16 - Change Password SSH                      ( Any )"
-    echo -e "${BLUE}| 17 - Make Telegram Proxy (MTProto)            ( Kharej )"
-    echo -e "${BLUE}| 18 - Update server and install dependences    ( Any )"
-    echo -e "${BLUE}| 19 - Change source list IRAN                  ( IRAN )"
-    echo -e "${BLUE}| 20 - Install Marzban Panel                    ( IRAN )"
-    echo -e "${BLUE}| 21 - Disable/Enable Ping Response             ( Any )"
-    echo -e "${BLUE}| 22 - List Port By Usage                       ( Any )"
+    echo -e "${BLUE}| 4  - Set DNS Google"
+    echo -e "${BLUE}| 5  - Set DNS Shecan "
+    echo -e "${BLUE}| 6  - Fix WhatsApp datetime"
+    echo -e "${BLUE}| 7  - Disable IPv6"
+    echo -e "${BLUE}| 8  - Speedtest bench"
+    echo -e "${BLUE}| 9  - Remove IPtables Rules"
+    echo -e "${BLUE}| 10 - Install BBR v3"
+    echo -e "${BLUE}| 11 - Install WARP+"
+    echo -e "${BLUE}| 12 - Speedtest ArvanCloud"
+    echo -e "${BLUE}| 13 - Change SSH port"
+    echo -e "${BLUE}| 14 - Auto SSL Marzban/X-UI (by @ErfJab)"
+    echo -e "${BLUE}| 15 - Auto Backup Marzban/X-UI (by @AC_Lover)"
+    echo -e "${BLUE}| 16 - Change Password SSH"
+    echo -e "${BLUE}| 17 - Make Telegram Proxy (MTProto)"
+    echo -e "${BLUE}| 18 - Update server and install dependences"
+    echo -e "${BLUE}| 19 - Change source list IRAN"
+    echo -e "${BLUE}| 20 - Install Marzban Panel"
+    echo -e "${BLUE}| 21 - Disable/Enable Ping Response"
+    echo -e "${BLUE}| 22 - List Port By Usage"
+    echo -e "${BLUE}| 23 - Block All SPEEDTEST Sites in X-UI"
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
     echo -e "${NC}+------------------------------------------------------------------------------------------------------------------+${NC}"
@@ -221,85 +222,63 @@ wellcome(){
             read -p "Server tag (should be a string of 32 hexadecimal characters): " server_tag
             read -p "List of authentication methods - place empty for default - (should be a comma-separated list): " auth_methods
             read -p "MTProto domain (should be a valid domain name): " mtproto_domain
-            # Set default values if user input is empty
             port=${port:-443}
             auth_methods=${auth_methods:-"dd,-a tls"}
-            # Download and run MTProto installation script
             curl -L -o mtp_install.sh https://git.io/fj5ru && \
             bash mtp_install.sh -p $port -s $secret_key -t $server_tag -a $auth_methods -d $mtproto_domain
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
         ;;
     18)
-            # Set a vibrant blue background color for the script's output
             tput setaf 4
-
-            # Perform the server update process
             echo "🟦 Updating the server..."
-
-            # Update the package repositories
             apt update 
-
-            # Wait for the update process to complete
             while [ $(pgrep apt-get) -gt 0 ]; do
                 sleep 1
             done
 
-            # Upgrade all installed packages
             echo "🟦 Upgrading all packages..."
             apt upgrade -y
 
             apt install zenity tput
-            # Clear the screen to show the updated package list
             clear
 
-            # Check for any packages to install
             packages=$(dpkg -l | grep "^i ." | awk '{print $2}')
 
-            # Set a contrasting yellow color for the packages list
             tput setaf 2
 
-            # Display the list of packages to install
             echo "🟦 Packages to install:"
             echo
             for package in $packages; do
                 echo "   $package"
             done
 
-            # Set the background color back to blue
             tput setaf 4
 
-            # Install the packages automatically
             echo "🟦 Installing packages..."
 
             for package in $packages; do
                 apt install -y $package
             done
 
-            # Set a green color to indicate successful completion
             tput setaf 2
 
-            # Display completion message
             echo "🟩 Server update completed."
 
-            # Return to the main menu
             echo "🟦 Returning to main menu..."
 
-            # Clear the screen for a fresh start
             clear
         ;;
 
     19)
-        # sudo passwd
-
             if ! command -v python3 &> /dev/null
             then
-                echo "Python 3 نصب نیست. در حال نصب..."
+                echo "Python 3 not installed."
                 sudo apt update
                 sudo apt install -y python3
             fi
-
-            python3 core/change-name-server.py
+            wget https://raw.githubusercontent.com/dev-ir/assistant-vps/master/core/change-name-server.py
+            python3 change-name-server.py
 
         ;;
 
@@ -314,7 +293,9 @@ wellcome(){
     22)
         bash <(curl -Ls https://gist.githubusercontent.com/dev-ir/9e0d30603a7f9c50700c1d48a206af4d/raw/786d93cbdd79315c9acbc13cd47aa1523f33e944/list-port-usages)
         ;;
-
+    23)
+        bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/speedtest-ban/master/main.sh)
+        ;;
     0)
         echo -e "${GREEN}Exiting program...${NC}"
         exit 0
