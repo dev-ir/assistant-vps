@@ -11,7 +11,6 @@ cur_dir=$(pwd)
 # check root
 [[ $EUID -ne 0 ]] && echo -e "${RED}Fatal error: ${plain} Please run this script with root privilege \n " && exit 1
 
-
 install_jq() {
     if ! command -v jq &> /dev/null; then
         # Check if the system is using apt package manager
@@ -28,22 +27,15 @@ install_jq() {
     fi
 }
 
-
 loader(){
-
     install_jq
-
     # Get server IP
     SERVER_IP=$(hostname -I | awk '{print $1}')
-
     # Fetch server country using ip-api.com
     SERVER_COUNTRY=$(curl -sS "http://ip-api.com/json/$SERVER_IP" | jq -r '.country')
-
     # Fetch server isp using ip-api.com 
     SERVER_ISP=$(curl -sS "http://ip-api.com/json/$SERVER_IP" | jq -r '.isp')
-
     wellcome
-
 }
 
 install_speedtest(){
@@ -54,7 +46,6 @@ install_speedtest(){
     sleep .5 
     speedtest
 }
-
 
 change_ssh_port(){
     echo ""
@@ -96,8 +87,9 @@ wellcome(){
     echo "| ##  ##  ##      ##        ##   ##        ##    ##  ##   ######     ##          ##  ##   ##  ##  ##           |" 
     echo "| ######   ####    ####     ##    ####     ##    ######   ######     ##   #####  ##  ##   #####    ####        |" 
     echo "| ##  ##      ##      ##    ##       ##    ##    ##  ##   ## ###     ##          ##  ##   ##          ##       |" 
-    echo "| ##  ##  ##  ##  ##  ##    ##   ##  ##    ##    ##  ##   ##  ##     ##           ####    ##      ##  ## (2.2) |" 
+    echo "| ##  ##  ##  ##  ##  ##    ##   ##  ##    ##    ##  ##   ##  ##     ##           ####    ##      ##  ## (2.3) |" 
     echo "| ##  ##   ####    ####    ####   ####     ##    ##  ##   ##  ##     ##            ##     ##       ####        |"
+    echo "|                                     TG CHANNEL : @DVHOST_CLOUD                                               |"
     echo "+--------------------------------------------------------------------------------------------------------------+"
     echo -e "${GREEN}|Server Location:${NC} $SERVER_COUNTRY"
     echo -e "${GREEN}|Server IP:${NC} $SERVER_IP"
@@ -141,8 +133,11 @@ wellcome(){
         ;;
     2)
         # htop
-        sudo apt install btop -y
-        btop
+        # sudo apt install btop -y
+        # btop
+        # install from snap
+        sudo apt-get install snapd
+        sudo snap install btop
         ;;
     3)
         rm x-ui_installer.sh
