@@ -79,7 +79,8 @@ change_ssh_port(){
 }
 setupFakeWebSite(){
     sudo apt-get update
-    apt install unzip -y
+    sudo apt-get install unzip -y
+    
     if ! command -v nginx &> /dev/null; then
         echo "The Nginx software is not installed; the installation process has started."
         if sudo apt-get install -y nginx; then
@@ -92,28 +93,35 @@ setupFakeWebSite(){
         echo "The Nginx software was already installed."
     fi
     
-    cd /root
+    cd /root || { echo "Failed to change directory to /root"; exit 1; }
+    
     if [[ -d "randomfakehtml-master" ]]; then
-        cd randomfakehtml-master
+        cd website-templates-master || { echo "Failed to change directory to randomfakehtml-master"; exit 1; }
     else
         wget https://github.com/learning-zone/website-templates/archive/refs/heads/master.zip
-        unzip master.zip && rm master.zip
-        cd randomfakehtml-master
+        unzip master.zip
+        rm master.zip
+        cd website-templates-master || { echo "Failed to change directory to randomfakehtml-master"; exit 1; }
         rm -rf assets
         rm ".gitattributes" "README.md" "_config.yml"
     fi
     
-    RandomHTML=$(a=(*); echo ${a[$((RANDOM % ${#a[@]}))]} 2>&1)
-    echo "Random template name: ${RandomHTML}"
+    # Select a random directory if there are any directories in the current path
+    if [[ -d */ ]]; then
+        RandomHTML=$(ls -d */ | shuf -n1)
+        echo "Random template name: ${RandomHTML}"
+    else
+        echo "No directories found to choose from."
+        exit 1
+    fi
     
     if [[ -d "${RandomHTML}" && -d "/var/www/html/" ]]; then
-        rm -rf /var/www/html/*
-        cp -a ${RandomHTML}/. "/var/www/html/"
-        echo  "Template extracted successfully!"
+        sudo rm -rf /var/www/html/*
+        sudo cp -a "${RandomHTML}"* /var/www/html/
+        echo "Template extracted successfully!"
     else
         echo "Extraction error!"
     fi  
-    clear
 }
 
 wellcome(){
