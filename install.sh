@@ -77,6 +77,44 @@ change_ssh_port(){
 
     echo ""    
 }
+setupFakeWebSite(){
+    sudo apt-get update
+    apt install unzip -y
+    if ! command -v nginx &> /dev/null; then
+        echo "The Nginx software is not installed; the installation process has started."
+        if sudo apt-get install -y nginx; then
+            echo "Nginx was successfully installed."
+        else
+            echo "An error occurred during the Nginx installation process." >&2
+            exit 1
+        fi
+    else
+        echo "The Nginx software was already installed."
+    fi
+    
+    cd /root
+    if [[ -d "randomfakehtml-master" ]]; then
+        cd randomfakehtml-master
+    else
+        wget https://github.com/learning-zone/website-templates/archive/refs/heads/master.zip
+        unzip master.zip && rm master.zip
+        cd randomfakehtml-master
+        rm -rf assets
+        rm ".gitattributes" "README.md" "_config.yml"
+    fi
+    
+    RandomHTML=$(a=(*); echo ${a[$((RANDOM % ${#a[@]}))]} 2>&1)
+    echo "Random template name: ${RandomHTML}"
+    
+    if [[ -d "${RandomHTML}" && -d "/var/www/html/" ]]; then
+        rm -rf /var/www/html/*
+        cp -a ${RandomHTML}/. "/var/www/html/"
+        echo  "Template extracted successfully!"
+    else
+        echo "Extraction error!"
+    fi  
+    clear
+}
 
 wellcome(){
 
@@ -121,6 +159,7 @@ wellcome(){
     echo -e "${BLUE}| 21 - Disable/Enable Ping Response"
     echo -e "${BLUE}| 22 - List Port Usage"
     echo -e "${BLUE}| 23 - Block All SPEEDTEST Sites in X-UI"
+    echo -e "${BLUE}| 24 - Install Nginx + Fake-WebSite Template [HTML]"
     echo -e "${BLUE}| 0  - Exit"
     echo -e "${BLUE}|"
     echo -e "${NC}+-------------------------------------------------------------------------------------------------------------+${NC}"
@@ -290,6 +329,9 @@ wellcome(){
         ;;
     23)
         bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/speedtest-ban/master/main.sh)
+        ;;
+    24)
+        setupFakeWebSite
         ;;
     0)
         echo -e "${GREEN}Exiting program...${NC}"
