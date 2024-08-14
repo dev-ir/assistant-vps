@@ -100,8 +100,7 @@ setupFakeWebSite(){
         rm -rf randomfakehtml-master
     fi
 
-    # Download and unzip the file
-    wget master.zip https://github.com/learning-zone/website-templates/archive/refs/heads/master.zip
+    wget https://github.com/learning-zone/website-templates/archive/refs/heads/master.zip
     unzip master.zip
     rm master.zip
     cd website-templates-master || { echo "Failed to change directory to randomfakehtml-master"; exit 1; }
