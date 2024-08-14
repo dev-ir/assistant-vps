@@ -94,19 +94,20 @@ setupFakeWebSite(){
     fi
     
     cd /root || { echo "Failed to change directory to /root"; exit 1; }
-    
-    if [[ -d "randomfakehtml-master" ]]; then
-        cd website-templates-master || { echo "Failed to change directory to randomfakehtml-master"; exit 1; }
-    else
-        wget https://github.com/learning-zone/website-templates/archive/refs/heads/master.zip
-        unzip master.zip
-        rm master.zip
-        cd website-templates-master || { echo "Failed to change directory to randomfakehtml-master"; exit 1; }
-        rm -rf assets
-        rm ".gitattributes" "README.md" "_config.yml"
+
+    if [[ -d "website-templates-master" ]]; then
+        echo "Removing existing 'website-templates-master' directory..."
+        rm -rf randomfakehtml-master
     fi
+
+    # Download and unzip the file
+    wget master.zip https://github.com/learning-zone/website-templates/archive/refs/heads/master.zip
+    unzip master.zip
+    rm master.zip
+    cd website-templates-master || { echo "Failed to change directory to randomfakehtml-master"; exit 1; }
+    rm -rf assets
+    rm ".gitattributes" "README.md" "_config.yml"
     
-    # Select a random directory if there are any directories in the current path
     if [[ -d */ ]]; then
         RandomHTML=$(ls -d */ | shuf -n1)
         echo "Random template name: ${RandomHTML}"
@@ -123,6 +124,7 @@ setupFakeWebSite(){
         echo "Extraction error!"
     fi  
 }
+
 
 wellcome(){
 
