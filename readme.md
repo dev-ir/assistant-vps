@@ -37,6 +37,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 - Update server and install dependences
 - Change source list to IRAN
 - List Port By SiZE
+- Run Fake-WebSite Template
 
 ## 💻 Recommended OS
 
