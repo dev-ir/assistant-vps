@@ -97,7 +97,7 @@ setupFakeWebSite(){
 
     if [[ -d "website-templates-master" ]]; then
         echo "Removing existing 'website-templates-master' directory..."
-        rm -rf randomfakehtml-master
+        rm -rf website-templates-master
     fi
 
     wget https://github.com/learning-zone/website-templates/archive/refs/heads/master.zip
@@ -107,17 +107,17 @@ setupFakeWebSite(){
     rm -rf assets
     rm ".gitattributes" "README.md" "_config.yml"
     
-    if [[ -d */ ]]; then
-        RandomHTML=$(a=(*); echo ${a[$((RANDOM % ${#a[@]}))]} 2>&1)
-        echo "Random template name: ${RandomHTML}"
+    randomTemplate=$(a=(*); echo ${a[$((RANDOM % ${#a[@]}))]} 2>&1)
+    if [[ -n "$randomTemplate" ]]; then
+        echo "Random template name: ${randomTemplate}"
     else
         echo "No directories found to choose from."
         exit 1
     fi
     
-    if [[ -d "${RandomHTML}" && -d "/var/www/html/" ]]; then
+    if [[ -d "${randomTemplate}" && -d "/var/www/html/" ]]; then
         sudo rm -rf /var/www/html/*
-        sudo cp -a "${RandomHTML}"* /var/www/html/
+        sudo cp -a "${randomTemplate}/." /var/www/html/
         echo "Template extracted successfully!"
     else
         echo "Extraction error!"
