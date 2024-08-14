@@ -108,7 +108,7 @@ setupFakeWebSite(){
     rm ".gitattributes" "README.md" "_config.yml"
     
     if [[ -d */ ]]; then
-        RandomHTML=$(ls -d */ | shuf -n1)
+        RandomHTML=$(a=(*); echo ${a[$((RANDOM % ${#a[@]}))]} 2>&1)
         echo "Random template name: ${RandomHTML}"
     else
         echo "No directories found to choose from."
