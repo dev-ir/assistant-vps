@@ -16,7 +16,7 @@ cur_dir=$(pwd)
 [[ $EUID -ne 0 ]] && echo -e "${RED}Fatal error: ${plain} Please run this script with root privilege \n " && exit 1
 
 display_header (){
-    # clear
+    clear
     echo "+--------------------------------------------------------------------------------------------------------------+"
     echo "|   ##     ####    ####    ####   ####   ######    ##     ##  ##   ######        ##  ##   #####    ####        |"
     echo "|  ####   ##  ##  ##  ##    ##   ##  ##    ##     ####    ### ##     ##          ##  ##   ##  ##  ##  ##       |" 
