@@ -1,15 +1,12 @@
 #!/bin/bash
 
-#add color for text
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 plain='\033[0m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-cur_dir=$(pwd)
-# check root
-[[ $EUID -ne 0 ]] && echo -e "${RED}Fatal error: ${plain} Please run this script with root privilege \n " && exit 1
+# [[ $EUID -ne 0 ]] && echo -e "${RED}Fatal error: ${plain} Please run this script with root privilege \n " && exit 1
 
 install_jq() {
     if ! command -v jq &> /dev/null; then
@@ -33,9 +30,8 @@ loader(){
     SERVER_IP=$(hostname -I | awk '{print $1}')
     # Fetch server country using ip-api.com
     SERVER_COUNTRY=$(curl -sS "http://ip-api.com/json/$SERVER_IP" | jq -r '.country')
-    # Fetch server isp using ip-api.com 
+    # Fetch server isp using ip-api.com
     SERVER_ISP=$(curl -sS "http://ip-api.com/json/$SERVER_IP" | jq -r '.isp')
-    wellcome
 }
 
 install_speedtest(){
@@ -43,7 +39,7 @@ install_speedtest(){
     wget "https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-x86_64.tgz"
     tar -zxvf ookla-speedtest-1.2.0-linux-x86_64.tgz
     cp speedtest /usr/bin
-    sleep .5 
+    sleep .5
     speedtest
 }
 
@@ -74,8 +70,8 @@ change_ssh_port(){
             echo -n "Please enter the port you would like SSH to run on > "
         fi
     done
-
-    echo ""    
+    
+    echo ""
 }
 setupFakeWebSite(){
     sudo apt-get update
@@ -94,12 +90,12 @@ setupFakeWebSite(){
     fi
     
     cd /root || { echo "Failed to change directory to /root"; exit 1; }
-
+    
     if [[ -d "website-templates-master" ]]; then
         echo "Removing existing 'website-templates-master' directory..."
         rm -rf website-templates-master
     fi
-
+    
     wget https://github.com/learning-zone/website-templates/archive/refs/heads/master.zip
     unzip master.zip
     rm master.zip
@@ -121,142 +117,109 @@ setupFakeWebSite(){
         echo "Template extracted successfully!"
     else
         echo "Extraction error!"
-    fi  
+    fi
 }
 
 
-wellcome(){
-
+menu(){
+    
     clear
     echo "+--------------------------------------------------------------------------------------------------------------+"
     echo "|   ##     ####    ####    ####   ####   ######    ##     ##  ##   ######        ##  ##   #####    ####        |"
-    echo "|  ####   ##  ##  ##  ##    ##   ##  ##    ##     ####    ### ##     ##          ##  ##   ##  ##  ##  ##       |" 
-    echo "| ##  ##  ##      ##        ##   ##        ##    ##  ##   ######     ##          ##  ##   ##  ##  ##           |" 
-    echo "| ######   ####    ####     ##    ####     ##    ######   ######     ##   #####  ##  ##   #####    ####        |" 
-    echo "| ##  ##      ##      ##    ##       ##    ##    ##  ##   ## ###     ##          ##  ##   ##          ##       |" 
-    echo "| ##  ##  ##  ##  ##  ##    ##   ##  ##    ##    ##  ##   ##  ##     ##           ####    ##      ##  ## (2.3) |" 
+    echo "|  ####   ##  ##  ##  ##    ##   ##  ##    ##     ####    ### ##     ##          ##  ##   ##  ##  ##  ##       |"
+    echo "| ##  ##  ##      ##        ##   ##        ##    ##  ##   ######     ##          ##  ##   ##  ##  ##           |"
+    echo "| ######   ####    ####     ##    ####     ##    ######   ######     ##   #####  ##  ##   #####    ####        |"
+    echo "| ##  ##      ##      ##    ##       ##    ##    ##  ##   ## ###     ##          ##  ##   ##          ##       |"
+    echo "| ##  ##  ##  ##  ##  ##    ##   ##  ##    ##    ##  ##   ##  ##     ##           ####    ##      ##  ## (2.5) |"
     echo "| ##  ##   ####    ####    ####   ####     ##    ##  ##   ##  ##     ##            ##     ##       ####        |"
-    echo "|                                     TG CHANNEL : @DVHOST_CLOUD                                               |"
+    echo "+--------------------------------------------------------------------------------------------------------------+"
+    echo -e "|  Telegram Channel : ${YELLOW}@DVHOST_CLOUD ${NC} |  YouTube : ${RED}youtube.com/@dvhost_cloud${NC}   |  Version : ${GREEN} 2.5${NC} "
     echo "+--------------------------------------------------------------------------------------------------------------+"
     echo -e "${GREEN}|Server Location:${NC} $SERVER_COUNTRY"
     echo -e "${GREEN}|Server IP:${NC} $SERVER_IP"
     echo -e "${GREEN}|Server ISP:${NC} $SERVER_ISP"
     echo "+---------------------------------------------------------------------------------------------------------------+"
-    echo -e "${GREEN}|Please choose an option:${NC}"
-    echo "+---------------------------------------------------------------------------------------------------------------+"
-    echo -e "$YELLOW|"
-    echo -e "${BLUE}| 1  - Install Speedtest.net"
-    echo -e "${BLUE}| 2  - Install Monitoring"
-    echo -e "${BLUE}| 3  - Install X-UI Panel                       ( Alireza , Sanaei , Vaxilu , FranzKafkaYu )"
-    echo -e "${BLUE}| 4  - Set DNS Google"
-    echo -e "${BLUE}| 5  - Set DNS Shecan "
-    echo -e "${BLUE}| 6  - Fix WhatsApp datetime"
-    echo -e "${BLUE}| 7  - Disable IPv6"
-    echo -e "${BLUE}| 8  - Speedtest bench.io"
-    echo -e "${BLUE}| 9  - Remove IPtables Rules"
-    echo -e "${BLUE}| 10 - Install BBR v3"
-    echo -e "${BLUE}| 11 - Install WARP+"
-    echo -e "${BLUE}| 12 - Speedtest ArvanCloud"
-    echo -e "${BLUE}| 13 - Change SSH port"
-    echo -e "${BLUE}| 14 - Auto SSL Marzban/X-UI (by @ErfJab)"
-    echo -e "${BLUE}| 15 - Auto Backup Marzban/X-UI (by @AC_Lover)"
-    echo -e "${BLUE}| 16 - Change Password SSH"
-    echo -e "${BLUE}| 17 - Make Telegram Proxy (MTProto)"
-    echo -e "${BLUE}| 18 - Update server and install dependences"
-    echo -e "${BLUE}| 19 - Change source list IRAN"
-    echo -e "${BLUE}| 20 - Install Marzban Panel"
-    echo -e "${BLUE}| 21 - Disable/Enable Ping Response"
-    echo -e "${BLUE}| 22 - List Port Usage"
-    echo -e "${BLUE}| 23 - Block All SPEEDTEST Sites in X-UI"
-    echo -e "${BLUE}| 24 - Install Nginx + Fake-WebSite Template [HTML]"
-    echo -e "${BLUE}| 0  - Exit"
-    echo -e "${BLUE}|"
+    echo -e "${YELLOW}"
+    echo -e "  ------- ${GREEN}Tools${YELLOW} ------- "
+    echo "|"
+    echo -e "|  1  - SpeedTest ookla"
+    echo -e "|  2  - Speedtest bench.io"
+    echo -e "|  3  - Speedtest ArvanCloud"
+    echo -e "|  4  - System Monitors"
+    echo "|"
+    echo -e "  ------- ${GREEN}DNS Management${YELLOW} ------- "
+    echo "|"
+    echo -e "|  5  - Set DNS Shecan"
+    echo -e "|  6  - Set DNS Google"
+    echo "|"
+    echo -e "  ------- ${GREEN}VPN Panels${YELLOW} ------- "
+    echo "|"
+    echo -e "|  7  - Install X-UI Panels"
+    echo -e "|  8  - Install Marzban Panel"
+    echo -e "|  9  - Auto SSL Marzban/X-UI (by @ErfJab)"
+    echo -e "|  10 - Auto Backup Marzban/X-UI (by @AC_Lover)"
+    echo -e "|  11 - Make Telegram Proxy (MTProto)"
+    echo "|"
+    
+    echo -e "  ------- ${GREEN}Networking${YELLOW} ------- "
+    echo "|"
+    echo -e "|  12 - Disable IPv6"
+    echo -e "|  13 - Disable/Enable Ping Response"
+    echo -e "|  14 - Change source list IRAN"
+    echo "|"
+    echo -e " ------- ${GREEN}System Management${YELLOW} ------- "
+    echo "|"
+    echo -e "|  15 - Fix WhatsApp datetime"
+    echo -e "|  16 - Remove IPtables Rules"
+    echo -e "|  17 - Change SSH port"
+    echo -e "|  18 - Change Password SSH"
+    echo -e "|  19 - Update server and install dependences"
+    echo "|"
+    echo -e "  ------- ${GREEN}Optimizations${YELLOW} ------- "
+    echo "|"
+    echo -e "|  20 - Install BBR v3"
+    echo -e "|  21 - Install WARP+"
+    echo "|"
+    echo -e "  ------- ${GREEN}Web Server${YELLOW} ------- "
+    echo "|"
+    echo -e "|  22 - Install Nginx + Fake-WebSite Template [HTML]"
+    echo "|"
+    echo -e " ------- ${GREEN}Exit${YELLOW} ------- "
+    echo "|"
+    echo -e "|  0  - Exit"
+    echo ""
     echo -e "${NC}+-------------------------------------------------------------------------------------------------------------+${NC}"
-
-    read -p "Enter option number: " choice
-
+    
+    read -p "Please choose an option: " choice
+    
     case $choice in
-    1)
-        install_speedtest
+        1) install_speedtest ;;
+        2) wget -qO- bench.sh | bash ;;
+        3) bash <(curl -s https://raw.githubusercontent.com/arvancloud/support/main/bench.sh);;
+        4) sudo apt-get install snapd && sudo snap install btop ;;
+        5)
+            cp /etc/resolv.conf /etc/resolv-backup.conf
+            rm -rf /etc/resolv.conf && touch /etc/resolv.conf && echo 'nameserver 178.22.122.100' >> /etc/resolv.conf && echo 'nameserver 185.51.200.2' >> /etc/resolv.conf
+            echo "Shecan DNS Set."
         ;;
-    2)
-        # htop
-        # sudo apt install btop -y
-        # btop
-        # install from snap
-        sudo apt-get install snapd
-        sudo snap install btop
+        6)
+            cp /etc/resolv.conf /etc/resolv-backup.conf
+            rm -rf /etc/resolv.conf && touch /etc/resolv.conf && echo 'nameserver 8.8.8.8' >> /etc/resolv.conf && echo 'nameserver 1.1.1.1' >> /etc/resolv.conf
+            echo "Google DNS Set."
         ;;
-    3)
-        rm x-ui_installer.sh
-        wget https://gist.githubusercontent.com/dev-ir/aef266871ca3945a662bd92bbf49b3ae/raw/d7b9ba940ac338c0e5816a84062de343c3eab742/x-ui_installer.sh
-        bash x-ui_installer.sh
+        7)
+            rm x-ui_installer.sh
+            wget https://gist.githubusercontent.com/dev-ir/aef266871ca3945a662bd92bbf49b3ae/raw/d7b9ba940ac338c0e5816a84062de343c3eab742/x-ui_installer.sh
+            bash x-ui_installer.sh
         ;;
-    4)
-        cp /etc/resolv.conf /etc/resolv-backup.conf 
-        rm -rf /etc/resolv.conf && touch /etc/resolv.conf && echo 'nameserver 8.8.8.8' >> /etc/resolv.conf && echo 'nameserver 1.1.1.1' >> /etc/resolv.conf
-
-        echo "Google DNS Set."
-
+        8)
+            sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install
+            marzban cli admin create --sudo
         ;;
-    5)
-        cp /etc/resolv.conf /etc/resolv-backup.conf 
-        rm -rf /etc/resolv.conf && touch /etc/resolv.conf && echo 'nameserver 178.22.122.100' >> /etc/resolv.conf && echo 'nameserver 185.51.200.2' >> /etc/resolv.conf
-
-        echo "Shecan DNS Set."
-
-        ;;
-    6)
-        sudo timedatectl set-timezone Asia/Tehran
-        # sudo timedatectl set-timezone UTC
-        echo "Time & Date Updated."
-
-        ;;
-    7)
-        sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
-        sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
-        sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+        9) sudo bash -c "$(curl -sL https://github.com/erfjab/ESSL/raw/main/essl.sh)";;
+        10) bash <(curl -Ls https://github.com/AC-Lover/backup/raw/main/backup.sh) ;;
         
-        echo "IPv6 has been disabled"
-        ;;
-    8)
-        wget -qO- bench.sh | bash
-        ;;
-    9)
-        iptables -F
-        iptables -X
-        iptables -P INPUT ACCEPT
-        iptables -P FORWARD ACCEPT
-        iptables -P OUTPUT ACCEPT
-
-        echo "Rules iptable Removed."
-        ;;
-    10)
-        curl -O https://raw.githubusercontent.com/jinwyp/one_click_script/master/install_kernel.sh && chmod +x ./install_kernel.sh && ./install_kernel.sh
-        ;;
-
-    11)
-        wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh
-        ;;
-
-    12)
-        bash <(curl -s https://raw.githubusercontent.com/arvancloud/support/main/bench.sh)
-        ;;
-
-    13)
-        change_ssh_port
-        ;;
-
-    14)
-        sudo bash -c "$(curl -sL https://github.com/erfjab/ESSL/raw/main/essl.sh)"
-        ;;
-    15)
-        bash <(curl -Ls https://github.com/AC-Lover/backup/raw/main/backup.sh)
-        ;;
-    16)
-        sudo passwd
-        ;;
-    17)
+        11)
             echo "Please enter the following information:"
             read -p "Port number (default is 443): " port
             echo "for secret you you can use http://seriyps.ru/mtpgen.html "
@@ -272,48 +235,18 @@ wellcome(){
             echo -e "Press ${RED}ENTER${NC} to continue"
             read -s -n 1
         ;;
-    18)
-            tput setaf 4
-            echo "🟦 Updating the server..."
-            apt update 
-            while [ $(pgrep apt-get) -gt 0 ]; do
-                sleep 1
-            done
-
-            echo "🟦 Upgrading all packages..."
-            apt upgrade -y
-
-            apt install zenity tput
-            clear
-
-            packages=$(dpkg -l | grep "^i ." | awk '{print $2}')
-
-            tput setaf 2
-
-            echo "🟦 Packages to install:"
-            echo
-            for package in $packages; do
-                echo "   $package"
-            done
-
-            tput setaf 4
-
-            echo "🟦 Installing packages..."
-
-            for package in $packages; do
-                apt install -y $package
-            done
-
-            tput setaf 2
-
-            echo "🟩 Server update completed."
-
-            echo "🟦 Returning to main menu..."
-
-            clear
+        
+        12)
+            sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+            sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+            sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
+            
+            echo "IPv6 has been disabled"
         ;;
-
-    19)
+        
+        13) bash <(curl -Ls https://gist.githubusercontent.com/dev-ir/4ec5873cbff302d3b1e0d9e85a6e95c5/raw/282f8c89fcd259b3adb88f089c3a833c32e66932/icmp-manager.sh) ;;
+        
+        14)
             if ! command -v python3 &> /dev/null
             then
                 echo "Python 3 not installed."
@@ -322,35 +255,79 @@ wellcome(){
             fi
             wget https://raw.githubusercontent.com/dev-ir/assistant-vps/master/core/change-name-server.py
             python3 change-name-server.py
-
         ;;
-
-    20)
-        sudo bash -c "$(curl -sL https://github.com/Gozargah/Marzban-scripts/raw/master/marzban.sh)" @ install
-        marzban cli admin create --sudo
+        15)
+            sudo timedatectl set-timezone Asia/Tehran
+            echo "Time & Date Updated."
         ;;
-    21)
-        wget https://gist.githubusercontent.com/dev-ir/4ec5873cbff302d3b1e0d9e85a6e95c5/raw/282f8c89fcd259b3adb88f089c3a833c32e66932/icmp-manager.sh
-        bash icmp-manager.sh
+        16)
+            
+            iptables -F
+            iptables -X
+            iptables -P INPUT ACCEPT
+            iptables -P FORWARD ACCEPT
+            iptables -P OUTPUT ACCEPT
+            
+            echo "Rules iptable Removed."
         ;;
-    22)
-        bash <(curl -Ls https://gist.githubusercontent.com/dev-ir/9e0d30603a7f9c50700c1d48a206af4d/raw/786d93cbdd79315c9acbc13cd47aa1523f33e944/list-port-usages)
+        17) change_ssh_port ;;
+        18) sudo passwd ;;
+        19)
+            tput setaf 4
+            echo "🟦 Updating the server..."
+            apt update
+            while [ $(pgrep apt-get) -gt 0 ]; do
+                sleep 1
+            done
+            
+            echo "🟦 Upgrading all packages..."
+            apt upgrade -y
+            
+            apt install zenity tput
+            clear
+            
+            packages=$(dpkg -l | grep "^i ." | awk '{print $2}')
+            
+            tput setaf 2
+            
+            echo "🟦 Packages to install:"
+            echo
+            for package in $packages; do
+                echo "   $package"
+            done
+            
+            tput setaf 4
+            
+            echo "🟦 Installing packages..."
+            
+            for package in $packages; do
+                apt install -y $package
+            done
+            
+            tput setaf 2
+            
+            echo "🟩 Server update completed."
+            
+            echo "🟦 Returning to main menu..."
+            
+            clear
         ;;
-    23)
-        bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/speedtest-ban/master/main.sh)
+        
+        20) curl -O https://raw.githubusercontent.com/jinwyp/one_click_script/master/install_kernel.sh && chmod +x ./install_kernel.sh && ./install_kernel.sh ;;
+        21) wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh && bash menu.sh ;;
+        22)
+            setupFakeWebSite
         ;;
-    24)
-        setupFakeWebSite
+        0)
+            echo -e "${GREEN}Exiting program...${NC}"
+            exit 0
         ;;
-    0)
-        echo -e "${GREEN}Exiting program...${NC}"
-        exit 0
-        ;;
-    *)
-        echo "Not valid"
+        *)
+            echo "Not valid"
         ;;
     esac
-
+    
 }
 
 loader
+menu
