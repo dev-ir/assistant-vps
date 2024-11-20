@@ -49,7 +49,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/dev-ir/assistant-vps/master/in
 
 
 ## 🪚 Preview
-![image](https://github.com/user-attachments/assets/f78cc5b4-8c2a-4d3a-a4b9-8da6fb166b2d)
+![image](https://github.com/user-attachments/assets/ac175c06-12d8-45ee-ab1c-561848e6c67e)
 
 ## Languages
 
